@@ -86,11 +86,10 @@ def send_tokens( receiver_pk, tx_amount ):
     
     #send the signed transaction
     tx_confirm = acl.send_transaction(signed_tx)
-    #acl.status_after_block(first_valid_round+2)
-    print("sender_pk=",sender_pk)
-    print("txid = ", txid)
+    #acl.status_after_block(first_valid_round+2)  
     wait_for_confirmation(acl, txid = signed_tx.transaction.get_txid())
-    
+    sender_pk = pk
+   
     return sender_pk, txid
    
    # Function from Algorand Inc.
