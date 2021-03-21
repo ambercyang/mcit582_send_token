@@ -115,6 +115,3 @@ def wait_for_confirmation(client, txid):
 
 # In[ ]:
 
-
-send_tokens( receiver_pk, tx_amount )
-
