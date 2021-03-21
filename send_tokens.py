@@ -85,7 +85,7 @@ def send_tokens( receiver_pk, tx_amount ):
     #txid = acl.send_transaction(signed_tx)
     
     #send the signed transaction
-    tx_confirm = acl.send_transaction(signed_tx, headers ={'content-type':'application/x-binary'})
+    tx_confirm = acl.send_transaction(signed_tx, headers)
     #acl.status_after_block(first_valid_round+2)
     print("sender_pk=",sender_pk)
     print("txid = ", txid)
