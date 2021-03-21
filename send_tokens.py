@@ -3,10 +3,6 @@
 
 # In[4]:
 
-
-pip install py-algorand-sdk
-
-
 # In[9]:
 
 
