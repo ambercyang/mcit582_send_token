@@ -3,6 +3,10 @@
 
 # In[4]:
 
+
+pip install py-algorand-sdk
+
+
 # In[9]:
 
 
@@ -47,7 +51,7 @@ import json
 #print("my public key = ", pk)
 
 
-# In[38]:
+# In[39]:
 
 
 #Connect to Algorand node maintained by PureStake
@@ -75,11 +79,11 @@ def send_tokens( receiver_pk, tx_amount ):
     sk = mnemonic.to_private_key(mnemonic_secret)
     pk = mnemonic.to_public_key(mnemonic_secret)
     print("my public key = ", pk)
-    account_info = acl.account_info(pk)
+    account_info = alc.account_info(pk)
     
     
     #prepare and sign the transaction
-    tx = transaction.PaymentTxn(pk,tx_fee,first_valid_round,last_valid_round,gen_hash,reciver_pk,tx_amount)
+    tx = transaction.PaymentTxn(pk,tx_fee,first_valid_round,last_valid_round,gen_hash,receiver_pk,tx_amount)
     signed_tx = tx.sign(account_a_private_key)
     txid = acl.send_transaction(signed_tx)
     
@@ -113,5 +117,14 @@ def wait_for_confirmation(client, txid):
     return txinfo
 
 
+# In[40]:
+
+
+#send_tokens( receiver_pk, tx_amount )
+
+
 # In[ ]:
+
+
+
 
