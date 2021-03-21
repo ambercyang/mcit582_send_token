@@ -81,7 +81,7 @@ def send_tokens( receiver_pk, tx_amount ):
     
     #prepare and sign the transaction
     tx = transaction.PaymentTxn(pk,tx_fee,first_valid_round,last_valid_round,gen_hash,receiver_pk,tx_amount)
-    signed_tx = tx.sign(account_a_private_key)
+    signed_tx = tx.sign(sk)
     txid = acl.send_transaction(signed_tx)
     
     #send the signed transaction
