@@ -82,22 +82,18 @@ def send_tokens( receiver_pk, tx_amount ):
     #prepare and sign the transaction
     tx = transaction.PaymentTxn(pk,tx_fee,first_valid_round,last_valid_round,gen_hash,receiver_pk,tx_amount)
     signed_tx = tx.sign(sk)
-    txid = acl.send_transaction(signed_tx)
+    #txid = acl.send_transaction(signed_tx)
     
     #send the signed transaction
     tx_confirm = acl.send_transaction(signed_tx, headers ={'content-type':'application/x-binary'})
     #acl.status_after_block(first_valid_round+2)
     print("sender_pk=",sender_pk)
     print("txid = ", txid)
-    wait_for_confirmation(acl, txid)
+    wait_for_confirmation(acl, txid = signed_tx.transaction.get_txid())
     
     return sender_pk, txid
-
-
-# In[4]:
-
-
-# Function from Algorand Inc.
+   
+   # Function from Algorand Inc.
 def wait_for_confirmation(client, txid):
     """
     Utility function to wait until the transaction is
@@ -112,16 +108,6 @@ def wait_for_confirmation(client, txid):
         txinfo = client.pending_transaction_info(txid)
     print("Transaction {} confirmed in round {}.".format(txid, txinfo.get('confirmed-round')))
     return txinfo
-
-
-# In[40]:
-
-
-#send_tokens( receiver_pk, tx_amount )
-
-
-# In[ ]:
-
 
 
 
