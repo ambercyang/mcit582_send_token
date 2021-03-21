@@ -75,13 +75,13 @@ def send_tokens( receiver_pk, tx_amount ):
     sk = mnemonic.to_private_key(mnemonic_secret)
     pk = mnemonic.to_public_key(mnemonic_secret)
     print("my public key = ", pk)
-    account_info = algod_client.account_info(pk)
+    account_info = acl.account_info(pk)
     
     
     #prepare and sign the transaction
     tx = transaction.PaymentTxn(pk,tx_free,first_valid_round,last_valid_round,gen_hash,reciver_pk,tx_amount)
     signed_tx = tx.sign(account_a_private_key)
-    txid = algod_client.send_transaction(signed_tx)
+    txid = acl.send_transaction(signed_tx)
     
     #send the signed transaction
     tx_confirm = acl.send_transaction(signed_tx, headers ={'content-type':'application/x-binary'})
