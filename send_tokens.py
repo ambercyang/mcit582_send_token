@@ -76,7 +76,7 @@ def send_tokens( receiver_pk, tx_amount ):
     sk = mnemonic.to_private_key(mnemonic_secret)
     pk = mnemonic.to_public_key(mnemonic_secret)
     print("my public key = ", pk)
-    account_info = alc.account_info(pk)
+    account_info = acl.account_info(pk)
     
     
     #prepare and sign the transaction
